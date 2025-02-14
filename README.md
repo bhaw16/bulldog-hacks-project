@@ -7,6 +7,7 @@ A discord bot written in Java and designed to help students with language classe
 ## Dependencies
 
 JDK version: openjdk-21
+
 Maven version: 3.8.6
 
 ## Compile Bot
@@ -43,11 +44,13 @@ main may be replaced with master depending on git setup
 3. git switch -c feature-myfeature
 4. work on branch
 5. git add and commit
-6. git switch main
-7. git pull origin
-8. git merge feature-myfeature
-9. resolve any conflicts
-10. git push origin
+8. git switch main
+9. git pull
+10. git switch feature-myfeature
+11. git merge main
+12. resolve any conflicts
+13. git push feature-myfeature
+14. open pull request
 
 # Resources
 
