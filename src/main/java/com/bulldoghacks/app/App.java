@@ -9,6 +9,7 @@ import javax.security.auth.login.LoginException;
 
 public class App extends ListenerAdapter {
     public static void main(String[] args) throws LoginException {
+        // TODO get token from environment variable
         String token = "TODOTOKEN";
         JDA jda = JDABuilder.createDefault(token)
             .enableIntents(GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MESSAGES)
