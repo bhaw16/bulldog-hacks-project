@@ -7,6 +7,7 @@ A discord bot written in Java and designed to help students with language classe
 ## Dependencies
 
 JDK version: openjdk-21
+
 Maven version: 3.8.6
 
 ## Compile Bot
