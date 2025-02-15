@@ -7,12 +7,12 @@ public abstract class VerbTense {
 	protected String vosotros_as;
 	protected String ellos_as_ustedes;
 	protected String vos;
-	protected String stem;
+	protected InfinitiveVerb infinitiveForm;
 	
-	public VerbTense(String stem, String yo, String tu,
+	public VerbTense(InfinitiveVerb infinitiveForm, String yo, String tu,
 	String el_ella_usted, String nosotros_as, String vosotros_as,
 	String ellos_as_ustedes, String vos) {
-		this.stem = stem;
+		this.infinitiveForm = infinitiveForm;
 		this.yo = yo;
 		this.tu = tu;
 		this.el_ella_usted = el_ella_usted;
