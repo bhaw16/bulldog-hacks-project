@@ -6,6 +6,23 @@ public class InfinitiveVerb {
 	private boolean reflexive;
 	
 	public String toString() {
-		return new StringBuilder(stem).append(ending).toString();
+		StringBuilder verb = new StringBuilder(stem).append(ending);
+		return (reflexive) ? verb.append("se").toString() : verb.toString();
+	}
+	
+	public String getVerbStem() {
+		return stem;
+	}
+	
+	public String getVerbEnding() {
+		return ending;
+	}
+	
+	public boolean getIrregularFlag() {
+		return irregular;
+	}
+	
+	public boolean getReflexiveFlag() {
+		return reflexive;
 	}
 }
