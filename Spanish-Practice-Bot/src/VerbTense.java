@@ -9,6 +9,18 @@ public abstract class VerbTense {
 	protected String vos;
 	protected String stem;
 	
+	public VerbTense(String stem, String yo, String tu,
+	String el_ella_usted, String nosotros_as, String vosotros_as,
+	String ellos_as_ustedes, String vos) {
+		this.stem = stem;
+		this.yo = yo;
+		this.tu = tu;
+		this.el_ella_usted = el_ella_usted;
+		this.nosotros_as = nosotros_as;
+		this.vosotros_as = vosotros_as;
+		this.vos = vos;
+	}
+	
 	protected abstract String conjugateYo();
 	protected abstract String conjugateTu();
 	protected abstract String conjugateElEllaUsted();
