@@ -6,21 +6,19 @@ public class SpanishPracticeDriver {
 	public static void main(String[] args) throws VerbException {
 		// TODO Auto-generated method stub
 		PresenteAr llamarse = new PresenteAr(new InfinitiveVerb("llam", "ar", false, true));
-		Scanner kybd1 = new Scanner(System.in);
-		PracticeRegularArConjugation(kybd1, llamarse);
+		Scanner kybd = new Scanner(System.in);
+		PracticeRegularArConjugation(kybd, llamarse);
 		/*System.out.println(llamarse);
 		System.out.println();*/
-		/*PresenteAr llamar = new PresenteAr(new InfinitiveVerb("llam", "ar"));
-		Scanner kybd2 = new Scanner(System.in);
-		PracticeRegularArConjugation(kybd2, llamar);
+		PresenteAr llamar = new PresenteAr(new InfinitiveVerb("llam", "ar"));
+		PracticeRegularArConjugation(kybd, llamar);
 		//System.out.println(llamar);
 		PresenteAr encontrar = new PresenteAr(new InfinitiveVerb("encontr", "ar", true), true);
-		Scanner kybd3 = new Scanner(System.in);
-		PracticeIrregularArConjugation(kybd3, encontrar, "encuentr");
+		PracticeIrregularArConjugation(kybd, encontrar, "encuentr");
 		//System.out.println();
 		PresenteAr encontrarse = new PresenteAr(new InfinitiveVerb("encontr", "ar", true, true), true);
-		Scanner kybd4 = new Scanner(System.in);
-		PracticeIrregularArConjugation(kybd4, encontrarse, "encuentr");
+		PracticeIrregularArConjugation(kybd, encontrarse, "encuentr");
+		kybd.close();
 		/*System.out.println(encontrar.toString("encuentr"));
 		System.out.println();
 		System.out.println(encontrarse.toString("encuentr"));*/
@@ -41,7 +39,6 @@ public class SpanishPracticeDriver {
 		System.out.println((conjugationCorrect) ? "Correct!" :
 		new StringBuilder("Incorrect. The correct conjugations are:\n")
 		.append(verb));
-		kybd.close();
 	}
 	
 	public static void PracticeIrregularArConjugation(Scanner kybd, PresenteAr verb, String stem) throws VerbException {
@@ -59,7 +56,6 @@ public class SpanishPracticeDriver {
 		System.out.println((conjugationCorrect) ? "Correct!" :
 		new StringBuilder("Incorrect. The correct conjugations are:\n")
 		.append(verb.toString(stem)));
-		kybd.close();
 	}
 	
 	
