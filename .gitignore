@@ -11,3 +11,5 @@ buildNumber.properties
 .project
 .classpath
 /.metadata/
+.env
+.settings
