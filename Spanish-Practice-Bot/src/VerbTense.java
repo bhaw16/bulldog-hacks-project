@@ -23,6 +23,7 @@ public abstract class VerbTense {
 	}
 	
 	public abstract String toString();
+	public abstract InfinitiveVerb getInfinitiveForm();
 	public abstract String conjugateYo() throws VerbException;
 	public abstract String conjugateTu() throws VerbException;
 	public abstract String conjugateElEllaUsted() throws VerbException;

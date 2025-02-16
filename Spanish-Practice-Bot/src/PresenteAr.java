@@ -51,6 +51,14 @@ public class PresenteAr extends VerbTense {
 	}
 	*/
 	
+	public InfinitiveVerb getInfinitiveForm() {
+		return this.infinitiveForm;
+	}
+	
+	public boolean getStemChangeFlag() {
+		return this.needsNewStem;
+	}
+	
 	//toString for regular verbs/irregular verbs with one stem and ending
 	public String toString() {
 		try {
