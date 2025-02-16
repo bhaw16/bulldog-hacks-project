@@ -1,6 +1,3 @@
-package spanish;
-
-
 public class VerbException extends Exception {
 
 	public VerbException() {

@@ -1,6 +1,3 @@
-package spanish;
-
-
 public class InfinitiveVerb {
 	private String stem;
 	private String ending;

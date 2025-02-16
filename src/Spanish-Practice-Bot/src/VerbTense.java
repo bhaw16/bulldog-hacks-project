@@ -1,6 +1,3 @@
-package spanish;
-
-
 public abstract class VerbTense {
 	protected String yo;
 	protected String tu;

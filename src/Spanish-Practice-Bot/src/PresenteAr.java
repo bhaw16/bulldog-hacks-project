@@ -1,5 +1,3 @@
-package spanish;
-
 public class PresenteAr extends VerbTense {
 	
 	private boolean needsNewStem;
