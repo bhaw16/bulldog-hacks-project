@@ -1,4 +1,4 @@
-package java.spanish;
+package spanish;
 
 import java.util.Scanner;
 

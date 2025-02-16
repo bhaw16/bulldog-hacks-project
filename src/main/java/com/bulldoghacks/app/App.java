@@ -6,7 +6,8 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import javax.security.auth.login.LoginException;
-import java.spanish.*;
+import spanish.*;
+import java.util.*;
 
 public class App extends ListenerAdapter {
     public static void main(String[] args) throws LoginException {
@@ -17,6 +18,7 @@ public class App extends ListenerAdapter {
             .addEventListeners(new App())
             .build();
         System.out.println("Hello World!");
+        List<PresenteAr> arVerbs = List.of();
     }
 
     @Override

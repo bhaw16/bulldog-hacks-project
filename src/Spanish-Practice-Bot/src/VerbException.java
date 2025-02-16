@@ -1,4 +1,4 @@
-package java.spanish;
+package spanish;
 
 
 public class VerbException extends Exception {
