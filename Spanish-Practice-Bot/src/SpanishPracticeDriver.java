@@ -1,0 +1,103 @@
+import java.util.Scanner;
+
+
+public class SpanishPracticeDriver {
+
+	public static void main(String[] args) throws VerbException {
+		// TODO Auto-generated method stub
+		PresenteAr llamarse = new PresenteAr(new InfinitiveVerb("llam", "ar", false, true));
+		Scanner kybd1 = new Scanner(System.in);
+		PracticeRegularArConjugation(kybd1, llamarse);
+		/*System.out.println(llamarse);
+		System.out.println();*/
+		/*PresenteAr llamar = new PresenteAr(new InfinitiveVerb("llam", "ar"));
+		Scanner kybd2 = new Scanner(System.in);
+		PracticeRegularArConjugation(kybd2, llamar);
+		//System.out.println(llamar);
+		PresenteAr encontrar = new PresenteAr(new InfinitiveVerb("encontr", "ar", true), true);
+		Scanner kybd3 = new Scanner(System.in);
+		PracticeIrregularArConjugation(kybd3, encontrar, "encuentr");
+		//System.out.println();
+		PresenteAr encontrarse = new PresenteAr(new InfinitiveVerb("encontr", "ar", true, true), true);
+		Scanner kybd4 = new Scanner(System.in);
+		PracticeIrregularArConjugation(kybd4, encontrarse, "encuentr");
+		/*System.out.println(encontrar.toString("encuentr"));
+		System.out.println();
+		System.out.println(encontrarse.toString("encuentr"));*/
+	}
+	
+	public static void PracticeRegularArConjugation(Scanner kybd, PresenteAr verb) throws VerbException {
+		System.out.print("Conjugate ");
+		System.out.print(verb.getInfinitiveForm());
+		System.out.println(".");
+		boolean conjugationCorrect = true;
+		String input;
+ 		int counter = 0;
+		do {
+			input = kybd.nextLine();
+			conjugationCorrect = checkRegularArVerb(input, verb, counter);
+			counter++;
+		} while (conjugationCorrect && counter < 7);
+		System.out.println((conjugationCorrect) ? "Correct!" :
+		new StringBuilder("Incorrect. The correct conjugations are:\n")
+		.append(verb));
+		kybd.close();
+	}
+	
+	public static void PracticeIrregularArConjugation(Scanner kybd, PresenteAr verb, String stem) throws VerbException {
+		System.out.print("Conjugate ");
+		System.out.print(verb.getInfinitiveForm());
+		System.out.println(".");
+		boolean conjugationCorrect = true;
+		String input;
+ 		int counter = 0;
+		do {
+			input = kybd.nextLine();
+			conjugationCorrect = checkIrregularArVerb(input, verb, stem, counter);
+			counter++;
+		} while (conjugationCorrect && counter < 7);
+		System.out.println((conjugationCorrect) ? "Correct!" :
+		new StringBuilder("Incorrect. The correct conjugations are:\n")
+		.append(verb.toString(stem)));
+		kybd.close();
+	}
+	
+	
+	public static boolean checkRegularArVerb(String input, PresenteAr verb, int iteration) throws VerbException {
+		switch (iteration) {
+			case 0:
+				return input.equalsIgnoreCase(verb.conjugateYo());
+			case 1:
+				return input.equalsIgnoreCase(verb.conjugateTu());
+			case 2:
+				return input.equalsIgnoreCase(verb.conjugateElEllaUsted());
+			case 3:
+				return input.equalsIgnoreCase(verb.conjugateNosotrosAs());
+			case 4:
+				return input.equalsIgnoreCase(verb.conjugateVosotrosAs());
+			case 5:
+				return input.equalsIgnoreCase(verb.conjugateEllosEllasUstedes());
+			default:
+				return input.equalsIgnoreCase(verb.conjugateVos());
+		}
+	}
+	
+	public static boolean checkIrregularArVerb(String input, PresenteAr verb, String stem, int iteration) throws VerbException {
+		switch (iteration) {
+			case 0:
+				return input.equalsIgnoreCase(verb.conjugateYo(stem));
+			case 1:
+				return input.equalsIgnoreCase(verb.conjugateTu(stem));
+			case 2:
+				return input.equalsIgnoreCase(verb.conjugateElEllaUsted(stem));
+			case 3:
+				return input.equalsIgnoreCase(verb.conjugateNosotrosAs());
+			case 4:
+				return input.equalsIgnoreCase(verb.conjugateVosotrosAs());
+			case 5:
+				return input.equalsIgnoreCase(verb.conjugateEllosEllasUstedes(stem));
+			default:
+				return input.equalsIgnoreCase(verb.conjugateVos());
+		}
+	}
+}
