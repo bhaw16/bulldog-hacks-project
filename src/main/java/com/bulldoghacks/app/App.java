@@ -1,10 +1,27 @@
 package com.bulldoghacks.app;
 
-/**
- * Hello world!
- */
-public class App {
-    public static void main(String[] args) {
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.requests.GatewayIntent;
+import javax.security.auth.login.LoginException;
+
+public class App extends ListenerAdapter {
+    public static void main(String[] args) throws LoginException {
+        // TODO get token from environment variable
+        String token = "TODOTOKEN";
+        JDA jda = JDABuilder.createDefault(token)
+            .enableIntents(GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MESSAGES)
+            .addEventListeners(new App())
+            .build();
         System.out.println("Hello World!");
+    }
+
+    @Override
+    public void onMessageReceived(MessageReceivedEvent event) {
+        if(event.getMessage().getContentRaw().equals("!ping")) {
+            event.getChannel().sendMessage("Pong!").queue();
+        }
     }
 }

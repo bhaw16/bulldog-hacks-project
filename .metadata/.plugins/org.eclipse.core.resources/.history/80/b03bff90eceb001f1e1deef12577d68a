@@ -1,0 +1,8 @@
+
+public interface Pair<T> {
+	public boolean addFirst(T element);
+	public boolean addLast(T element);
+	public boolean add(T element);
+	public T getFirst();
+	public T getLast();
+}
