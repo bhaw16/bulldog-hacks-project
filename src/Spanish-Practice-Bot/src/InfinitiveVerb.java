@@ -1,3 +1,5 @@
+package java.spanish;
+
 
 public class InfinitiveVerb {
 	private String stem;

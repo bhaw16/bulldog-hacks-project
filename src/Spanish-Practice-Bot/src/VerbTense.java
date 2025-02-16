@@ -1,3 +1,5 @@
+package java.spanish;
+
 
 public abstract class VerbTense {
 	protected String yo;

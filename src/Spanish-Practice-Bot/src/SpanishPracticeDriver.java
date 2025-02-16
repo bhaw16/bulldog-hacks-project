@@ -1,3 +1,5 @@
+package java.spanish;
+
 import java.util.Scanner;
 
 
