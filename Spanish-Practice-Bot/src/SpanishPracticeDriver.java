@@ -10,7 +10,12 @@ public class SpanishPracticeDriver {
 		System.out.println();
 		PresenteAr llamar = new PresenteAr(new InfinitiveVerb("llam", "ar"));
 		System.out.println(llamar);
-		
+		PresenteAr encontrar = new PresenteAr(new InfinitiveVerb("encontr", "ar", true), true);
+		System.out.println();
+		PresenteAr encontrarse = new PresenteAr(new InfinitiveVerb("encontr", "ar", true, true), true);
+		System.out.println(encontrar.toString("encuentr"));
+		System.out.println();
+		System.out.println(encontrarse.toString("encuentr"));
 	}
 
 }

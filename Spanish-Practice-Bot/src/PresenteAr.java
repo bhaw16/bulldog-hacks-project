@@ -12,6 +12,17 @@ public class PresenteAr extends VerbTense {
 			needsNewStem = false;
 	}
 	
+	//construct an irregular ar verb w/ changing stem
+	public PresenteAr(InfinitiveVerb infinitiveForm, boolean needsNewStem) throws VerbException {
+		super(infinitiveForm, "o", "as", "a", "amos", "áis", "an", "ás");
+		if ((!(infinitiveForm.getVerbEnding().equalsIgnoreCase("ar")))) {
+			throw new VerbException(infinitiveForm);
+		}
+		this.needsNewStem = needsNewStem;
+	}
+	
+	//The following commented constructors only apply to Er and Ir Verbs
+	/*
 	//construct an irregular verb in el presente perfecto (indicate endings, stem unchanging)
 	public PresenteAr(InfinitiveVerb infinitiveForm, String yo, String tu,
 	String el_ella_usted, String nosotros_as, String vosotros_as,
@@ -38,6 +49,7 @@ public class PresenteAr extends VerbTense {
 		}
 		this.needsNewStem = needsNewStem;
 	}
+	*/
 	
 	//toString for regular verbs/irregular verbs with one stem and ending
 	public String toString() {
@@ -58,7 +70,12 @@ public class PresenteAr extends VerbTense {
 	//toString for irregular verbs w/ changing stem on all forms except nosotros(as), vosotros(as) and vos
 	public String toString(String newStem) throws VerbException {
 		return new StringBuilder("Verb: ").append(infinitiveForm.toString())
-		.append("\nYo ").append(conjugateYo(newStem)).toString();
+		.append("\nYo ").append(conjugateYo(newStem)).append("\nTú ").append(conjugateTu(newStem))
+		.append("\nÉl/Ella/Elle/Usted ").append(conjugateElEllaUsted(newStem))
+		.append("\nNosotros(as) ").append(conjugateNosotrosAs())
+		.append("\nVosotros(as) ").append(conjugateVosotrosAs())
+		.append("\nEllos/Ellas/Elles/Ustedes ").append(conjugateEllosEllasUstedes(newStem))
+		.append("\nVos ").append(conjugateVos()).toString();
 	}
 	
 	@Override
