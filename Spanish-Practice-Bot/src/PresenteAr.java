@@ -1,15 +1,18 @@
 
 public class PresenteAr extends VerbTense {
 	
+	private boolean needsNewStem;
+	
 	//construct a regular ar verb in el presente perfecto
 	public PresenteAr(InfinitiveVerb infinitiveForm) throws VerbException {
 			super(infinitiveForm, "o", "as", "a", "amos", "áis", "an", "ás");
 			if ((!(infinitiveForm.getVerbEnding().equalsIgnoreCase("ar")))) {
 				throw new VerbException(infinitiveForm);
 			}
+			needsNewStem = false;
 	}
 	
-	//construct an irregular verb in el presente perfecto (indicate endings)
+	//construct an irregular verb in el presente perfecto (indicate endings, stem unchanging)
 	public PresenteAr(InfinitiveVerb infinitiveForm, String yo, String tu,
 	String el_ella_usted, String nosotros_as, String vosotros_as,
 	String ellos_as_ustedes, String vos) throws VerbException {
@@ -18,10 +21,51 @@ public class PresenteAr extends VerbTense {
 		if ((!(infinitiveForm.getVerbEnding().equalsIgnoreCase("ar")))) {
 			throw new VerbException(infinitiveForm);
 		}
+		needsNewStem = false;
+	}
+	
+	//construct an irregular verb w/ changing stem; indicate endings
+	public PresenteAr(InfinitiveVerb infinitiveForm, String yo, String tu,
+	String el_ella_usted, String nosotros_as, String vosotros_as,
+	String ellos_as_ustedes, String vos, boolean needsNewStem) throws VerbException {
+		super(infinitiveForm, yo, tu, el_ella_usted, nosotros_as,
+		vosotros_as, ellos_as_ustedes, vos);
+		if ((!(infinitiveForm.getVerbEnding().equalsIgnoreCase("ar")))) {
+			throw new VerbException(infinitiveForm);
+		}
+		if (!infinitiveForm.getIrregularFlag()) {
+			throw new VerbException();
+		}
+		this.needsNewStem = needsNewStem;
+	}
+	
+	//toString for regular verbs/irregular verbs with one stem and ending
+	public String toString() {
+		try {
+			return new StringBuilder("Verb: ").append(infinitiveForm.toString())
+			.append("\nYo ").append(conjugateYo()).append("\nTú ").append(conjugateTu())
+			.append("\nÉl/Ella/Elle/Usted ").append(conjugateElEllaUsted())
+			.append("\nNosotros(as) ").append(conjugateNosotrosAs())
+			.append("\nVosotros(as) ").append(conjugateVosotrosAs())
+			.append("\nEllos/Ellas/Elles/Ustedes ").append(conjugateEllosEllasUstedes())
+			.append("\nVos ").append(conjugateVos()).toString();
+		}
+		catch (VerbException v) {
+			return v.getMessage();
+		}
+	}
+	
+	//toString for irregular verbs w/ changing stem on all forms except nosotros(as), vosotros(as) and vos
+	public String toString(String newStem) throws VerbException {
+		return new StringBuilder("Verb: ").append(infinitiveForm.toString())
+		.append("\nYo ").append(conjugateYo(newStem)).toString();
 	}
 	
 	@Override
-	public String conjugateYo() {
+	public String conjugateYo() throws VerbException {
+		if (needsNewStem) {
+			throw new VerbException();
+		}
 		StringBuilder reflexiveStart = new StringBuilder("me ");
 		String verbString = new StringBuilder(infinitiveForm.getVerbStem()).append(yo).toString();
 		if (infinitiveForm.getReflexiveFlag()) {
@@ -31,7 +75,10 @@ public class PresenteAr extends VerbTense {
 		return verbString;
 	}
 	
-	public String conjugateYo(String newStem) {
+	public String conjugateYo(String newStem) throws VerbException {
+		if (!infinitiveForm.getIrregularFlag()) {
+			throw new VerbException(newStem);
+		}
 		StringBuilder reflexiveStart = new StringBuilder("me ");
 		String verbString = new StringBuilder(newStem).append(yo).toString();
 		if (infinitiveForm.getReflexiveFlag()) {
@@ -42,7 +89,10 @@ public class PresenteAr extends VerbTense {
 	}
 
 	@Override
-	public String conjugateTu() {
+	public String conjugateTu() throws VerbException {
+		if (needsNewStem) {
+			throw new VerbException();
+		}
 		// TODO Auto-generated method stub
 		StringBuilder reflexiveStart = new StringBuilder("te ");
 		String verbString = new StringBuilder(infinitiveForm.getVerbStem()).append(tu).toString();
@@ -53,7 +103,10 @@ public class PresenteAr extends VerbTense {
 		return verbString;
 	}
 	
-	public String conjugateTu(String newStem) {
+	public String conjugateTu(String newStem) throws VerbException {
+		if (!infinitiveForm.getIrregularFlag()) {
+			throw new VerbException(newStem);
+		}
 		StringBuilder reflexiveStart = new StringBuilder("te ");
 		String verbString = new StringBuilder(newStem).append(tu).toString();
 		if (infinitiveForm.getReflexiveFlag()) {
@@ -64,7 +117,10 @@ public class PresenteAr extends VerbTense {
 	}
 
 	@Override
-	public String conjugateElEllaUsted() {
+	public String conjugateElEllaUsted() throws VerbException {
+		if (needsNewStem) {
+			throw new VerbException();
+		}
 		// TODO Auto-generated method stub
 		StringBuilder reflexiveStart = new StringBuilder("se ");
 		String verbString = new StringBuilder(infinitiveForm.getVerbStem()).append(el_ella_usted).toString();
@@ -75,7 +131,10 @@ public class PresenteAr extends VerbTense {
 		return verbString;
 	}
 	
-	public String conjugateElEllaUsted(String newStem) {
+	public String conjugateElEllaUsted(String newStem) throws VerbException {
+		if (!infinitiveForm.getIrregularFlag()) {
+			throw new VerbException(newStem);
+		}
 		StringBuilder reflexiveStart = new StringBuilder("se ");
 		String verbString = new StringBuilder(newStem).append(el_ella_usted).toString();
 		if (infinitiveForm.getReflexiveFlag()) {
@@ -110,7 +169,10 @@ public class PresenteAr extends VerbTense {
 	}
 
 	@Override
-	public String conjugateEllosEllasUstedes() {
+	public String conjugateEllosEllasUstedes() throws VerbException {
+		if (needsNewStem) {
+			throw new VerbException();
+		}
 		// TODO Auto-generated method stub
 		StringBuilder reflexiveStart = new StringBuilder("se ");
 		String verbString = new StringBuilder(infinitiveForm.getVerbStem()).append(ellos_as_ustedes).toString();
@@ -121,7 +183,10 @@ public class PresenteAr extends VerbTense {
 		return verbString;
 	}
 	
-	public String conjugateEllosEllasUstedes(String newStem) {
+	public String conjugateEllosEllasUstedes(String newStem) throws VerbException {
+		if (!infinitiveForm.getIrregularFlag()) {
+			throw new VerbException(newStem);
+		}
 		StringBuilder reflexiveStart = new StringBuilder("se ");
 		String verbString = new StringBuilder(newStem).append(ellos_as_ustedes).toString();
 		if (infinitiveForm.getReflexiveFlag()) {
@@ -135,13 +200,13 @@ public class PresenteAr extends VerbTense {
 	public String conjugateVos() {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
-				StringBuilder reflexiveStart = new StringBuilder("te ");
-				String verbString = new StringBuilder(infinitiveForm.getVerbStem()).append(vos).toString();
-				if (infinitiveForm.getReflexiveFlag()) {
-					return reflexiveStart.append(verbString).toString();
-				}
-				// TODO Auto-generated method stub
-				return verbString;
+		StringBuilder reflexiveStart = new StringBuilder("te ");
+		String verbString = new StringBuilder(infinitiveForm.getVerbStem()).append(vos).toString();
+		if (infinitiveForm.getReflexiveFlag()) {
+			return reflexiveStart.append(verbString).toString();
+		}
+		// TODO Auto-generated method stub
+		return verbString;
 	}
 
 }

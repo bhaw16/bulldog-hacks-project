@@ -18,15 +18,17 @@ public abstract class VerbTense {
 		this.el_ella_usted = el_ella_usted;
 		this.nosotros_as = nosotros_as;
 		this.vosotros_as = vosotros_as;
+		this.ellos_as_ustedes = ellos_as_ustedes;
 		this.vos = vos;
 	}
 	
-	protected abstract String conjugateYo();
-	protected abstract String conjugateTu();
-	protected abstract String conjugateElEllaUsted();
-	protected abstract String conjugateNosotrosAs();
-	protected abstract String conjugateVosotrosAs();
-	protected abstract String conjugateEllosEllasUstedes();
-	protected abstract String conjugateVos();
+	public abstract String toString();
+	public abstract String conjugateYo() throws VerbException;
+	public abstract String conjugateTu() throws VerbException;
+	public abstract String conjugateElEllaUsted() throws VerbException;
+	public abstract String conjugateNosotrosAs();
+	public abstract String conjugateVosotrosAs();
+	public abstract String conjugateEllosEllasUstedes() throws VerbException;
+	public abstract String conjugateVos();
 	
 }
