@@ -1,0 +1,25 @@
+import java.util.*;
+
+
+public class ArrayPair<T> implements Pair<T> {
+	private T[] pair;
+	
+	public ArrayPair() {
+		pair = (T[])new Object[2];
+	}
+	
+	public boolean addFirst(T element) {
+		if (pair[0] != null) {
+			if (pair[1] != null) {
+				return false;
+			}
+			pair[0] = element;
+			return true;
+		}
+		else {
+			pair[1] = pair[0];
+			pair[0] = element;
+			return true;
+		}
+	}
+}

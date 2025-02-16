@@ -1,0 +1,72 @@
+import java.util.Scanner;
+
+
+public class SpanishPracticeDriver {
+
+	public static void main(String[] args) throws VerbException {
+		// TODO Auto-generated method stub
+		PresenteAr llamarse = new PresenteAr(new InfinitiveVerb("llam", "ar", false, true));
+		/*System.out.println(llamarse);
+		System.out.println();*/
+		PresenteAr llamar = new PresenteAr(new InfinitiveVerb("llam", "ar"));
+		//System.out.println(llamar);
+		PresenteAr encontrar = new PresenteAr(new InfinitiveVerb("encontr", "ar", true), true);
+		//System.out.println();
+		PresenteAr encontrarse = new PresenteAr(new InfinitiveVerb("encontr", "ar", true, true), true);
+		/*System.out.println(encontrar.toString("encuentr"));
+		System.out.println();
+		System.out.println(encontrarse.toString("encuentr"));*/
+		System.out.print("Conjugate ");
+		System.out.print(llamarse.getInfinitiveForm());
+		System.out.println(".");
+		boolean conjugationCorrect = true;
+		Scanner kybd = new Scanner(System.in);
+		String input;
+ 		int counter = 0;
+		do {
+			input = kybd.nextLine();
+			conjugationCorrect = checkRegularArVerb(input, llamarse, counter);
+			counter++;
+		} while (conjugationCorrect && counter < 7);
+		kybd.close();
+	}
+	
+	
+	public static boolean checkRegularArVerb(String input, PresenteAr verb, int iteration) throws VerbException {
+		switch (iteration) {
+			case 0:
+				return input.equalsIgnoreCase(verb.conjugateYo());
+			case 1:
+				return input.equalsIgnoreCase(verb.conjugateTu());
+			case 2:
+				return input.equalsIgnoreCase(verb.conjugateElEllaUsted());
+			case 3:
+				return input.equalsIgnoreCase(verb.conjugateNosotrosAs());
+			case 4:
+				return input.equalsIgnoreCase(verb.conjugateVosotrosAs());
+			case 5:
+				return input.equalsIgnoreCase(verb.conjugateEllosEllasUstedes());
+			default:
+				return input.equalsIgnoreCase(verb.conjugateVos());
+		}
+	}
+	
+	public static boolean checkIrregularArVerb(String input, PresenteAr verb, String stem, int iteration) throws VerbException {
+		switch (iteration) {
+			case 0:
+				return input.equalsIgnoreCase(verb.conjugateYo(stem));
+			case 1:
+				return input.equalsIgnoreCase(verb.conjugateTu(stem));
+			case 2:
+				return input.equalsIgnoreCase(verb.conjugateElEllaUsted(stem));
+			case 3:
+				return input.equalsIgnoreCase(verb.conjugateNosotrosAs());
+			case 4:
+				return input.equalsIgnoreCase(verb.conjugateVosotrosAs());
+			case 5:
+				return input.equalsIgnoreCase(verb.conjugateEllosEllasUstedes(stem));
+			default:
+				return input.equalsIgnoreCase(verb.conjugateVos());
+		}
+	}
+}
